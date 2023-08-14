@@ -4,33 +4,33 @@ apk.py is a Python script that makes reverse engineering Android apps easier, au
 
 ## Features
 apk.py basically uses [apktool](https://ibotpeaches.github.io/Apktool/) to disassemble, decode and rebuild resources and some python to automate the [frida](https://https://frida.re/) gadget injection process.
-It also supports app bundles/split APKs. 
+It also supports app bundles/split APKs.
 
  -  :mushroom: Patching APKs to load frida-gadget.so on start.
  -  :new: Support for app bundles/split APKs.
  -  :wrench: Disassembling resources to nearly original form with apktool.
  -  :nut_and_bolt: Rebuilding decoded resources back to binary APK/JAR with apktool.
  -  :old_key: Code signing the apk with apksigner.
- -  :desktop_computer: Multiple arch support (arm, arm64, x86, x86_64). 
+ -  :desktop_computer: Multiple arch support (arm, arm64, x86, x86_64).
  -  :no_mobile_phones: No rooted Android device needed.
 
 
 ## Getting started
-:arrow_left: Pulling an APK from a device is simple as running `./apk.py --pull <package_name>`
+:arrow_left: Pulling an APK from a device is simple as running `./apk.py pull <package_name>`
 
-:wrench: Decoding an APK is simple as running `./apk.py --decode <apk_name>`
+:wrench: Decoding an APK is simple as running `./apk.py decode <apk_name>`
 
-:nut_and_bolt: Rebuilding an APK is simple as running  `./apk.py --build <apk_dir>`
+:nut_and_bolt: Rebuilding an APK is simple as running  `./apk.py build <apk_dir>`
 
 
 ## apk.py pull
-`apk.py --pull` pull an APK from a device.
-It supports app bundles/split APKs, which means that split APKs will be joined in a single APK (this is useful for patching). 
+`apk.py pull` pull an APK from a device.
+It supports app bundles/split APKs, which means that split APKs will be joined in a single APK (this is useful for patching).
 If the package is an app bundle/split APK, apk.py will combine the APKs into a single APK, fixing all public resource identifiers.
 
 
 ## apk.py patch
-`apk.py --patch` patch an APK to load [frida-gadget.so](https://frida.re/docs/gadget/) on start.
+`apk.py patch` patch an APK to load [frida-gadget.so](https://frida.re/docs/gadget/) on start.
 
 frida-gadget.so is a Frida's shared library meant to be loaded by programs to be instrumented (when the Injected mode of operation isn’t suitable). By simply loading the library it will allow you to interact with it using existing Frida-based tools like frida-trace. It also supports a fully autonomous approach where it can run scripts off the filesystem without any outside communication.
 
@@ -121,14 +121,14 @@ console.log = function(str) {
 $ pip install -r requirements.txt
 ```
 
-## Usage 
+## Usage
 ### SYNOPSIS
 	apk.py [SUBCOMMAND] [APK FILE|APK DIR|PKG NAME] [FLAGS]
-	apk.py --pull [PKG NAME] [FLAGS]
-	apk.py --decode [APK FILE] [FLAGS]
-	apk.py --build [APK DIR] [FLAGS]
-	apk.py --patch [APK FILE] [FLAGS]
-	apk.py --rename [APK FILE] [PKG NAME] [FLAGS]
+	apk.py pull [PKG NAME] [FLAGS]
+	apk.py decode [APK FILE] [FLAGS]
+	apk.py build [APK DIR] [FLAGS]
+	apk.py patch [APK FILE] [FLAGS]
+	apk.py rename [APK FILE] [PKG NAME] [FLAGS]
 
  ### SUBCOMMANDS
 	pull	Pull an apk from device/emulator.
@@ -161,3 +161,7 @@ https://github.com/sensepost/objection/
 https://github.com/NickstaDB/patch-apk/
 
 https://neo-geo2.gitbook.io/adventures-on-security/frida-scripting-guide/frida-scripting-guide
+
+https://github.com/ax/apk.sh/
+
+https://github.com/81U380X/apk.py/
